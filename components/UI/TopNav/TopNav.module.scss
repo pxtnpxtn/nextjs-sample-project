@@ -1,5 +1,22 @@
+@import '../../../styles/_variables.scss';
+
 .container {
-	background-color: red;
-	height: 20vh;
-	width: 100%;
+	height: 80px;
+	padding: 20px;
+	background-color: $primary;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid black;
+
+	// TODO: Center logo/middle item
+
+	.rightSide {
+		display: flex;
+
+		// TODO: Remove margin first-of-child
+		> * {
+			margin-left: 6px;
+		}
+	}
 }

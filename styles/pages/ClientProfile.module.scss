@@ -1,0 +1,15 @@
+.container {
+	.subMenu {
+		height: 120px;
+		padding: 20px;
+		display: flex;
+		align-items: center;
+		background-color: green;
+	}
+
+	img {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+	}
+}
