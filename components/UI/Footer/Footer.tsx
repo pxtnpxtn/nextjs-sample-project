@@ -1,12 +1,12 @@
 import React from 'react'
-import styles from './TopNav.module.scss'
+import styles from './Footer.module.scss'
 
-function TopNav() {
+function Footer() {
     return (
         <div className={styles.container}>
-            test
+            
         </div>
     )
 }
 
-export default TopNav
+export default Footer

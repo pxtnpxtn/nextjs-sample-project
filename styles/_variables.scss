@@ -1,0 +1,14 @@
+// Screen sizes
+$xs: 600px;
+$sm: 768px;
+$md: 1024px;
+$lg: 200px;
+$xl: 5000px;
+$mobile-screen: 768px;
+$tablet-screen: 1024px;
+
+// Media queries
+// TODO: Change to min-width.
+$mobile: 'only screen and (max-width:#{$mobile-screen})';
+$tablet: 'only screen and (min-width:#{$mobile-screen + 1}) and (max-width: #{$tablet-screen})';
+$desktop: 'only screen and (min-width:#{$tablet-screen + 1})';
