@@ -13,10 +13,22 @@
 
 	.rightSide {
 		display: flex;
+		align-items: center;
 
 		// TODO: Remove margin first-of-child
-		> * {
+		* > :not(:first-of-type) {
 			margin-left: 6px;
+		}
+
+		.avatar {
+			height: 30px;
+			width: 30px;
+			border-radius: 50%;
+			border: 2px solid black;
+			font-size: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 }

@@ -28,27 +28,67 @@ function index() {
 			<TopNav />
 			<div className={styles.subMenu}>
 				<Link href={`/`}>
-					<a
-						style={{
-							height: 30,
-							width: 30,
-							backgroundColor: 'red',
-							marginRight: 16
-						}}
+					<img
+						src="/icons/left-arrow.svg"
+						alt="Menu"
+						height={25}
+						style={{ marginRight: 12 }}
 					/>
 				</Link>
 				<ClientInfoSummary />
 			</div>
 
-			{/* https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/XA6KIXE6FBFM5EWSA25JI5YAU4.jpg */}
-			{/* <Image
-				// src={image[1]}
-				src="../public/doge.jpeg"
-				alt="Picture of the company"
-				width={'100%'}
-				height={100}
-			/> */}
-			{/* <img src="../../public/doge.jpeg" alt="Company photo"></img> */}
+			<div className={styles.avatar}>
+				<Image src="/doge.jpeg" layout="fill" objectFit="cover" />
+			</div>
+
+			<div className={styles.contactInfo}>
+				<div className={styles.contactRow}>
+					<img
+						src="/icons/contact.svg"
+						alt="Menu"
+						height={25}
+						style={{ marginRight: 12 }}
+					/>
+					<div>
+						<h3>Rene Guy</h3>
+						<p>Job Title</p>
+					</div>
+				</div>
+				<div className={styles.contactRow}>
+					<img
+						src="/icons/phone.svg"
+						alt="Menu"
+						height={25}
+						style={{ marginRight: 12 }}
+					/>
+					<div>
+						<p>1-514-000-0000</p>
+					</div>
+				</div>
+				<div className={styles.contactRow}>
+					<img
+						src="/icons/email.svg"
+						alt="Menu"
+						height={25}
+						style={{ marginRight: 12 }}
+					/>
+					<div>
+						<p>email@email.com</p>
+					</div>
+				</div>
+				<div className={styles.contactRow}>
+					<img
+						src="/icons/location.svg"
+						alt="Menu"
+						height={25}
+						style={{ marginRight: 12 }}
+					/>
+					<div>
+						<p>Address info</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

@@ -21,6 +21,12 @@
 		justify-content: space-between;
 		align-items: center;
 		border-bottom: 2px solid black;
+
+		.filter {
+			display: flex;
+
+			// TODO: Add margin-right on all items but last
+		}
 	}
 
 	.list {
