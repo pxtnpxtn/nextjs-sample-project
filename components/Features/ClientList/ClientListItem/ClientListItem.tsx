@@ -8,7 +8,11 @@ function ClientListItem() {
 		<Link href={`/client/${444}`}>
 			<a className={styles.container}>
 				<ClientInfoSummary />
-				<img src="/icons/right-arrow.svg" alt="Menu" height={25} />
+				<img
+					src="/icons/right-arrow.svg"
+					alt="Right arrow"
+					height={25}
+				/>
 			</a>
 		</Link>
 	);

@@ -1,3 +1,5 @@
+@import '../../../../styles/_variables.scss';
+
 .container {
 	display: flex;
 	align-items: center;
@@ -13,7 +15,7 @@
 		height: 50px;
 		width: 50px;
 		border-radius: 50%;
-		border: 2px solid black;
+		border: 2px solid $primary;
 		overflow: hidden;
 	}
 }

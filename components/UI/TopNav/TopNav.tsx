@@ -8,10 +8,16 @@ function TopNav() {
 
 	return (
 		<div className={styles.container}>
-			<img src="/icons/hamburger-menu.svg" alt="Menu" height={25} />
-			<div style={{ height: 30, backgroundColor: 'red' }}>LOGO</div>
+			<div className={styles.leftSide}>
+				<img src="/icons/hamburger-menu.svg" alt="Menu" height={25} />
+			</div>
+			<img src="/logo.svg" alt="SiteSec logo" height={30} />
 			<div className={styles.rightSide}>
-				<img src="/icons/app-grid.svg" alt="Menu" height={30} />
+				<img
+					src="/icons/app-grid.svg"
+					alt="View more apps"
+					height={30}
+				/>
 				<div className={styles.avatar}>{profileLetter}</div>
 			</div>
 		</div>

@@ -21,7 +21,7 @@ function index() {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>SiteSec Client Page</title>
+				<title>SiteSec | Client Page</title>
 				<meta name="description" content="SiteSec client page" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
@@ -30,7 +30,7 @@ function index() {
 				<Link href={`/`}>
 					<img
 						src="/icons/left-arrow.svg"
-						alt="Menu"
+						alt="Go back"
 						height={25}
 						style={{ marginRight: 12 }}
 					/>
@@ -46,7 +46,7 @@ function index() {
 				<div className={styles.contactRow}>
 					<img
 						src="/icons/contact.svg"
-						alt="Menu"
+						alt="Contact"
 						height={25}
 						style={{ marginRight: 12 }}
 					/>
@@ -58,7 +58,7 @@ function index() {
 				<div className={styles.contactRow}>
 					<img
 						src="/icons/phone.svg"
-						alt="Menu"
+						alt="Phone"
 						height={25}
 						style={{ marginRight: 12 }}
 					/>
@@ -69,7 +69,7 @@ function index() {
 				<div className={styles.contactRow}>
 					<img
 						src="/icons/email.svg"
-						alt="Menu"
+						alt="Email"
 						height={25}
 						style={{ marginRight: 12 }}
 					/>
@@ -80,7 +80,7 @@ function index() {
 				<div className={styles.contactRow}>
 					<img
 						src="/icons/location.svg"
-						alt="Menu"
+						alt="Location"
 						height={25}
 						style={{ marginRight: 12 }}
 					/>

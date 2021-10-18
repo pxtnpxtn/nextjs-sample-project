@@ -1,3 +1,5 @@
+@import '../../styles/_variables.scss';
+
 .container {
 	height: 100vh;
 	display: flex;
@@ -8,7 +10,6 @@
 		padding: 20px;
 		display: flex;
 		align-items: center;
-		background-color: green;
 	}
 
 	.avatar {

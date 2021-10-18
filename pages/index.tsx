@@ -37,7 +37,7 @@ function index() {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>SiteSec Client Dashboard</title>
+				<title>SiteSec | Client Dashboard</title>
 				<meta name="description" content="SiteSec's client dashboard" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
@@ -46,10 +46,14 @@ function index() {
 			<h3 className={styles.banner}>Sites</h3>
 			<div className={styles.optionsBar}>
 				<div className={styles.filter}>
-					<p>Filter</p>
-					<img src="/icons/down-arrow.svg" alt="Menu" height={25} />
+					<p>All sites</p>
+					<img
+						src="/icons/down-arrow.svg"
+						alt="Down arrow"
+						height={20}
+					/>
 				</div>
-				<img src="/icons/search.svg" alt="Menu" height={25} />
+				<img src="/icons/search.svg" alt="Search" height={25} />
 			</div>
 			{/* TODO: Componentize? */}
 			<div className={styles.list}>
