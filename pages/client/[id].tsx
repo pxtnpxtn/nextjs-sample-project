@@ -14,6 +14,7 @@ function index() {
 	useEffect(() => {
 		if (router.query.id) {
 			console.log({ id });
+			// TODO: API call to get site info.
 		}
 	}, [router.query]);
 
