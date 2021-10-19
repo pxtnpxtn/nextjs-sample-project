@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import ClientListItem from '../components/Features/ClientList/ClientListItem/ClientListItem';
 import Footer from '../components/UI/Footer/Footer';
 import TopNav from '../components/UI/TopNav/TopNav';
+import { getAllSites as getAllSitesAPI } from '../data/api-sites';
 import styles from '../styles/pages/ClientList.module.scss';
 
 enum filterTypes {
@@ -16,10 +17,21 @@ function index() {
 	const [list, setList] = useState([]);
 	const [filter, setFilter] = useState(filterTypes.ALL);
 
+	const getAllSites = async () => {
+		const res = await getAllSitesAPI();
+
+		setList(res);
+	};
+
 	useEffect(() => {
 		// API call for list of sites
+		getAllSites();
 		// API call for Profile.
 	}, []);
+
+	useEffect(() => {
+		console.log({ list });
+	}, [list]);
 
 	useEffect(() => {
 		// TODO: Clean up.
@@ -57,10 +69,16 @@ function index() {
 			</div>
 			{/* TODO: Componentize? */}
 			<div className={styles.list}>
-				{[...Array(10)].map((_, i) => {
+				{list.map(({ id, title, address, images, contacts }) => {
 					return (
-						// TODO: Key = ID
-						<ClientListItem key={i} />
+						<ClientListItem
+							key={id}
+							id={id}
+							title={title}
+							address={address}
+							images={images}
+							contacts={contacts}
+						/>
 					);
 				})}
 				<div>PAGINATION 1 2 3 4 5</div>

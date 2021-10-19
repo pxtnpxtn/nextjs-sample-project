@@ -1,17 +1,27 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './ClientInfoSummary.module.scss';
+import { Site } from '../../../../models/SitesModel';
 
-function ClientInfoSummary() {
+function ClientInfoSummary({
+	title,
+	address,
+	images,
+	contacts
+}: Partial<Site>) {
 	return (
 		<div className={styles.container}>
 			<div className={styles.avatar}>
-				<Image src="/doge.jpeg" layout="fill" objectFit="cover" />
+				<Image src={images[0]} layout="fill" objectFit="cover" />
 			</div>
 			<div className={styles.info}>
-				<h3>Site Name</h3>
-				<p>Site Address</p>
-				<p>Main Contact</p>
+				<h3>{title}</h3>
+				<p>
+					{address?.city}, {address?.country}
+				</p>
+				<p>
+					{contacts?.main.firstName} {contacts?.main.lastName}
+				</p>
 			</div>
 		</div>
 	);

@@ -2,21 +2,34 @@ import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ClientInfoSummary from '../../components/Features/ClientList/ClientInfoSummary/ClientInfoSummary';
 import TopNav from '../../components/UI/TopNav/TopNav';
+import { getSiteById as getSiteByIdAPI } from '../../data/api-sites';
+import { Site } from '../../models/SitesModel';
 import styles from '../../styles/pages/ClientProfile.module.scss';
 
 function index() {
+	const [site, setSite] = useState<Site>();
 	const router = useRouter();
 	const { id } = router.query;
+
+	const getSiteById = async (id: string) => {
+		const res = await getSiteByIdAPI(id);
+
+		setSite(res[0]);
+	};
 
 	useEffect(() => {
 		if (router.query.id) {
 			console.log({ id });
-			// TODO: API call to get site info.
+			getSiteById(id);
 		}
 	}, [router.query]);
+
+	useEffect(() => {
+		console.log({ site });
+	}, [site]);
 
 	return (
 		<div className={styles.container}>
@@ -35,11 +48,16 @@ function index() {
 						style={{ marginRight: 12 }}
 					/>
 				</Link>
-				<ClientInfoSummary />
+				{/* <ClientInfoSummary
+					title={site.title}
+					address={site.address}
+					images={site.images}
+					contacts={site.contacts}
+				/> */}
 			</div>
 
 			<div className={styles.avatar}>
-				<Image src="/doge.jpeg" layout="fill" objectFit="cover" />
+				{/* <Image src={site?.images[1]} layout="fill" objectFit="cover" /> */}
 			</div>
 
 			<div className={styles.contactInfo}>
@@ -51,8 +69,11 @@ function index() {
 						style={{ marginRight: 12 }}
 					/>
 					<div>
-						<h3>Rene Guy</h3>
-						<p>Job Title</p>
+						<h3>
+							{site?.contacts.main.firstName}{' '}
+							{site?.contacts.main.lastName}
+						</h3>
+						<p>{site?.contacts.main.jobTitle}</p>
 					</div>
 				</div>
 				<div className={styles.contactRow}>
@@ -63,7 +84,7 @@ function index() {
 						style={{ marginRight: 12 }}
 					/>
 					<div>
-						<p>1-514-000-0000</p>
+						<p>{site?.contacts.main.phoneNumber}</p>
 					</div>
 				</div>
 				<div className={styles.contactRow}>
@@ -74,7 +95,7 @@ function index() {
 						style={{ marginRight: 12 }}
 					/>
 					<div>
-						<p>email@email.com</p>
+						<p>{site?.contacts.main.email}</p>
 					</div>
 				</div>
 				<div className={styles.contactRow}>
@@ -85,7 +106,13 @@ function index() {
 						style={{ marginRight: 12 }}
 					/>
 					<div>
-						<p>Address info</p>
+						<p>
+							{site?.contacts.main.address.street},{' '}
+							{site?.contacts.main.address.city},{' '}
+							{site?.contacts.main.address.state},{' '}
+							{site?.contacts.main.address.zipCode},{' '}
+							{site?.contacts.main.address.country}
+						</p>
 					</div>
 				</div>
 			</div>
