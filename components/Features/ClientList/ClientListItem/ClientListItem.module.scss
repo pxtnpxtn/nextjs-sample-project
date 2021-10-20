@@ -1,9 +1,15 @@
 @import '../../../../styles/_variables.scss';
 
 .container {
-	padding: 20px 30px;
+	padding: 18px 12px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid $text;
+
+	&:hover {
+		background-color: $lightgrey;
+		box-shadow: inset 1px 0 0 $lightgrey, inset -1px 0 0 $lightgrey,
+			0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+	}
 }

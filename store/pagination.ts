@@ -2,10 +2,10 @@ import create from 'zustand';
 import { Site } from '../models/SitesModel';
 
 export interface IPaginationOptions {
-    first: IPaginationInfo;
+    first?: IPaginationInfo;
     prev?: IPaginationInfo;
     next?: IPaginationInfo;
-    last: IPaginationInfo;
+    last?: IPaginationInfo;
 }
 
 export interface IPaginationInfo {

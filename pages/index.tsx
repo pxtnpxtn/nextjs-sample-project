@@ -6,7 +6,8 @@ import ClientListPagination from '../components/Features/ClientList/ClientListPa
 import TopNav from '../components/UI/TopNav/TopNav';
 import { getSiteList as getSiteListAPI } from '../data/api-sites';
 import styles from '../styles/pages/ClientList.module.scss';
-import usePaginationStore from '../store/pagination';
+import usePaginationStore, { IPaginationOptions } from '../store/pagination';
+import { Site } from '../models/SitesModel';
 
 enum filterTypes {
 	ALL = 'all',
@@ -28,8 +29,8 @@ function index() {
 	const getSiteList = async (pageNumber: number) => {
 		const res = await getSiteListAPI(pageNumber);
 
-		setPaginationOptions(parse(res.headers.link));
-		setList(res.data);
+		setPaginationOptions(parse(res.headers.link) as IPaginationOptions);
+		setList(res.data as Site[]);
 	};
 
 	useEffect(() => {
@@ -89,14 +90,13 @@ function index() {
 						/>
 					);
 				})}
-
-				<ClientListPagination
-					paginationOptions={paginationOptions}
-					currentPage={currentPage}
-					setCurrentPage={setCurrentPage}
-					getSiteList={getSiteList}
-				/>
 			</div>
+			<ClientListPagination
+				paginationOptions={paginationOptions}
+				currentPage={currentPage}
+				setCurrentPage={setCurrentPage}
+				getSiteList={getSiteList}
+			/>
 		</div>
 	);
 }

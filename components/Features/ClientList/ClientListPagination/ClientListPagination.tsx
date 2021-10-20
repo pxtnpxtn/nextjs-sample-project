@@ -52,6 +52,7 @@ function ClientListPagination({
 			>
 				Prev
 			</button>
+			<div className={styles.currentPage}>{currentPage}</div>
 			<button
 				onClick={goToNextPage}
 				disabled={

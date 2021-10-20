@@ -6,6 +6,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	border-top: 2px solid $primary;
 
 	button {
 		padding: 10px 15px;
@@ -15,9 +16,17 @@
 		background-color: $primary;
 		color: $white;
 		font-size: 16px;
+		cursor: pointer;
 
 		&:disabled {
 			background-color: #b2b2b2;
+			cursor: not-allowed;
 		}
+	}
+
+	.currentPage {
+		margin: 0 5px;
+		border-bottom: 2px solid #cd000d;
+		font-weight: 700;
 	}
 }

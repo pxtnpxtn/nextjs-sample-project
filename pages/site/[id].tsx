@@ -40,7 +40,7 @@ function index() {
 						src="/icons/left-arrow.svg"
 						alt="Go back"
 						height={25}
-						style={{ marginRight: 12 }}
+						style={{ marginRight: 12, cursor: 'pointer' }}
 					/>
 				</Link>
 				<ClientInfoSummary
@@ -54,7 +54,7 @@ function index() {
 			<div className={styles.avatar}>
 				{site?.images && (
 					<Image
-						src={site?.images[1]}
+						src={site?.images[0]}
 						layout="fill"
 						objectFit="cover"
 					/>
