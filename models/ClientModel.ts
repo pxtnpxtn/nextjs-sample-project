@@ -1,4 +1,4 @@
-export interface Client {
+export interface IClient {
 	id: string;
 	givenName: string;
 	logo: string;

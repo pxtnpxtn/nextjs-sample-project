@@ -1,3 +1,3 @@
-export interface AppVersion {
+export interface IAppVersion {
 	buildId: string;
 }

@@ -6,18 +6,21 @@ import React, { useEffect, useState } from 'react';
 import ClientInfoSummary from '../../components/Features/ClientList/ClientInfoSummary/ClientInfoSummary';
 import TopNav from '../../components/UI/TopNav/TopNav';
 import { getSiteById as getSiteByIdAPI } from '../../data/api-sites';
-import { Site } from '../../models/SitesModel';
+import { ISite } from '../../models/SitesModel';
 import styles from '../../styles/pages/ClientProfile.module.scss';
 
 function index() {
-	const [site, setSite] = useState<Site>();
+	const [site, setSite] = useState<ISite>();
 	const router = useRouter();
 	const { id } = router.query;
 
 	const getSiteById = async (id: string) => {
-		const res = await getSiteByIdAPI(id);
-
-		setSite(res[0]);
+		try {
+			const res = await getSiteByIdAPI(id);
+			setSite(res[0]);
+		} catch (e) {
+			console.log('Something went wrong', e);
+		}
 	};
 
 	useEffect(() => {

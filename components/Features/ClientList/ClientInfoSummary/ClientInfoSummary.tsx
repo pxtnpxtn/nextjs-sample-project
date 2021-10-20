@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './ClientInfoSummary.module.scss';
-import { Site } from '../../../../models/SitesModel';
+import { ISite } from '../../../../models/SitesModel';
 
 function ClientInfoSummary({
 	title,
 	address,
 	images,
 	contacts
-}: Partial<Site>) {
+}: Partial<ISite>) {
 	return (
 		<div className={styles.container}>
 			<div className={styles.avatar}>

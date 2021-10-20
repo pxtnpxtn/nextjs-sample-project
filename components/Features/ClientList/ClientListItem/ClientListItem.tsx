@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import ClientInfoSummary from '../ClientInfoSummary/ClientInfoSummary';
 import styles from './ClientListItem.module.scss';
-import { Site } from '../../../../models/SitesModel';
+import { ISite } from '../../../../models/SitesModel';
 
 function ClientListItem({
 	id,
@@ -10,7 +10,7 @@ function ClientListItem({
 	address,
 	images,
 	contacts
-}: Partial<Site>) {
+}: Partial<ISite>) {
 	return (
 		<Link href={`/site/${id}`}>
 			<a className={styles.container}>
