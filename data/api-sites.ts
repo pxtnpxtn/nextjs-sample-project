@@ -9,7 +9,9 @@ export const getSiteList = async (page = 1) => {
     });
 };
 
-export const getSiteById = async (id: string) => {
+// TODO: Fix typing.
+// : Promise<ISite> 
+export const getSiteById = async (id: string): Promise<any> => {
 	return axios.get(`${ENDPOINT}?id=${id}`).then((res) => {
         return res.data;
     });

@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+	createContext,
+	SetStateAction,
+	useContext,
+	useEffect,
+	useState
+} from 'react';
 import { getMyProfile as getMyProfileAPI } from '../data/api-profile';
 import { IProfile } from '../models/ProfileModel';
 
@@ -15,12 +21,12 @@ const AuthContext = createContext<{
 	}
 });
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }: any) => {
 	const [profile, setProfile] = useState({} as IProfile);
 
 	const getMyProfile = async () => {
 		const res = await getMyProfileAPI();
-		setProfile(res);
+		setProfile(res as SetStateAction<IProfile>);
 	};
 
 	useEffect(() => {

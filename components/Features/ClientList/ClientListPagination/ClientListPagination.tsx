@@ -20,8 +20,8 @@ function ClientListPagination({
 	isLoading
 }: IClientListPagination) {
 	const goToFirstPage = async () => {
-		getSiteList(Number(paginationOptions.first._page));
-		setCurrentPage(Number(paginationOptions.first._page));
+		getSiteList(Number(paginationOptions.first?._page));
+		setCurrentPage(Number(paginationOptions.first?._page));
 	};
 	const goToPreviousPage = () => {
 		getSiteList(Number(paginationOptions.prev?._page));
@@ -32,8 +32,8 @@ function ClientListPagination({
 		setCurrentPage(Number(paginationOptions.next?._page));
 	};
 	const goToLastPage = () => {
-		getSiteList(Number(paginationOptions.last._page));
-		setCurrentPage(Number(paginationOptions.last._page));
+		getSiteList(Number(paginationOptions.last?._page));
+		setCurrentPage(Number(paginationOptions.last?._page));
 	};
 
 	return (

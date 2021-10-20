@@ -4,7 +4,7 @@ import styles from './TopNav.module.scss';
 
 function TopNav() {
 	const { profile } = useAuth();
-	const firstNameLetter = profile.givenName.charAt(0);
+	const firstNameLetter = profile.givenName && profile.givenName.charAt(0);
 
 	return (
 		<div className={styles.container}>
