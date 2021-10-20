@@ -1,8 +1,8 @@
 @import '../../../styles/_variables.scss';
 
 .container {
-	height: 80px;
-	padding: 20px;
+	height: 5rem;
+	padding: 1.25rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -21,17 +21,12 @@
 		flex-grow: 1;
 		flex-basis: 0;
 
-		// TODO: Remove margin first-of-child
-		* > :not(:first-of-type) {
-			margin-left: 6px;
-		}
-
 		.avatar {
-			height: 30px;
-			width: 30px;
+			height: 2rem;
+			width: 2rem;
 			border-radius: 50%;
 			border: 2px solid $primary;
-			font-size: 20px;
+			font-size: 1.25rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;

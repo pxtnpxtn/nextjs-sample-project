@@ -1,7 +1,7 @@
 @import '../../../../styles/_variables.scss';
 
 .container {
-	padding: 20px;
+	padding: 1.25rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -9,24 +9,24 @@
 	border-top: 2px solid $primary;
 
 	button {
-		padding: 10px 15px;
+		padding: 0.625rem 0.875rem;
 		margin: 0 5px;
 		border: 1px solid $primary;
-		border-radius: 5px;
+		border-radius: 0.25rem;
 		background-color: $primary;
 		color: $white;
-		font-size: 16px;
+		font-size: 1rem;
 		cursor: pointer;
 
 		&:disabled {
-			background-color: #b2b2b2;
+			background-color: $darkgrey;
 			cursor: not-allowed;
 		}
 	}
 
 	.currentPage {
-		margin: 0 5px;
-		border-bottom: 2px solid #cd000d;
+		margin: 0 0.25rem;
+		border-bottom: 2px solid $primary;
 		font-weight: 700;
 	}
 }

@@ -8,6 +8,7 @@ import { getSiteList as getSiteListAPI } from '../data/api-sites';
 import styles from '../styles/pages/ClientList.module.scss';
 import usePaginationStore, { IPaginationOptions } from '../store/pagination';
 import { ISite } from '../models/SitesModel';
+import Loader from '../components/UI/Loader/Loader';
 
 enum filterTypes {
 	ALL = 'all',
@@ -16,6 +17,7 @@ enum filterTypes {
 }
 
 function index() {
+	const [isLoading, setIsLoading] = useState(true);
 	const [filter, setFilter] = useState(filterTypes.ALL);
 	const {
 		list,
@@ -27,6 +29,7 @@ function index() {
 	} = usePaginationStore();
 
 	const getSiteList = async (pageNumber: number) => {
+		setIsLoading(true);
 		try {
 			const res = await getSiteListAPI(pageNumber);
 
@@ -35,15 +38,11 @@ function index() {
 		} catch (e) {
 			console.log('Something went wrong', e);
 		}
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
-		// API call for list of sites
-		// if (list.length === 0) {
-		// getSiteList(currentPage);
-		// }
 		getSiteList(currentPage);
-		// API call for Profile.
 	}, []);
 
 	useEffect(() => {
@@ -81,25 +80,30 @@ function index() {
 				<img src="/icons/search.svg" alt="Search" height={25} />
 			</div>
 			{/* TODO: Componentize? */}
-			<div className={styles.list}>
-				{list.map(({ id, title, address, images, contacts }) => {
-					return (
-						<ClientListItem
-							key={id}
-							id={id}
-							title={title}
-							address={address}
-							images={images}
-							contacts={contacts}
-						/>
-					);
-				})}
-			</div>
+			{isLoading ? (
+				<Loader />
+			) : (
+				<div className={styles.list}>
+					{list.map(({ id, title, address, images, contacts }) => {
+						return (
+							<ClientListItem
+								key={id}
+								id={id}
+								title={title}
+								address={address}
+								images={images}
+								contacts={contacts}
+							/>
+						);
+					})}
+				</div>
+			)}
 			<ClientListPagination
 				paginationOptions={paginationOptions}
 				currentPage={currentPage}
 				setCurrentPage={setCurrentPage}
 				getSiteList={getSiteList}
+				isLoading={isLoading}
 			/>
 		</div>
 	);

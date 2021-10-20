@@ -9,13 +9,15 @@ interface IClientListPagination {
 	currentPage: number;
 	setCurrentPage: (newCurrentNumber: number) => void;
 	getSiteList: (pageNumber: number) => void;
+	isLoading: boolean;
 }
 
 function ClientListPagination({
 	paginationOptions,
 	currentPage,
 	setCurrentPage,
-	getSiteList
+	getSiteList,
+	isLoading
 }: IClientListPagination) {
 	const goToFirstPage = async () => {
 		getSiteList(Number(paginationOptions.first._page));
@@ -39,6 +41,7 @@ function ClientListPagination({
 			<button
 				onClick={goToFirstPage}
 				disabled={
+					isLoading ||
 					Number(paginationOptions?.first?._page) === currentPage
 				}
 			>
@@ -47,6 +50,7 @@ function ClientListPagination({
 			<button
 				onClick={goToPreviousPage}
 				disabled={
+					isLoading ||
 					Number(paginationOptions?.first?._page) === currentPage
 				}
 			>
@@ -56,6 +60,7 @@ function ClientListPagination({
 			<button
 				onClick={goToNextPage}
 				disabled={
+					isLoading ||
 					Number(paginationOptions?.last?._page) === currentPage
 				}
 			>
@@ -64,6 +69,7 @@ function ClientListPagination({
 			<button
 				onClick={goToLastPage}
 				disabled={
+					isLoading ||
 					Number(paginationOptions?.last?._page) === currentPage
 				}
 			>
