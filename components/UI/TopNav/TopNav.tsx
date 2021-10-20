@@ -1,10 +1,10 @@
 import React from 'react';
+import { useAuth } from '../../../context/auth.context';
 import styles from './TopNav.module.scss';
 
 function TopNav() {
-	// TODO: Auth context, get firstName, get first letter of name.
-	const firstName = 'Paxton';
-	const profileLetter = firstName.charAt(0);
+	const { profile } = useAuth();
+	const firstNameLetter = profile.givenName.charAt(0);
 
 	return (
 		<div className={styles.container}>
@@ -18,7 +18,7 @@ function TopNav() {
 					alt="View more apps"
 					height={30}
 				/>
-				<div className={styles.avatar}>{profileLetter}</div>
+				<div className={styles.avatar}>{firstNameLetter}</div>
 			</div>
 		</div>
 	);
