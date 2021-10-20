@@ -22,6 +22,10 @@
 			background-color: $darkgrey;
 			cursor: not-allowed;
 		}
+
+		&:hover:not(:disabled) {
+			background-color: $primary-dark;
+		}
 	}
 
 	.currentPage {
