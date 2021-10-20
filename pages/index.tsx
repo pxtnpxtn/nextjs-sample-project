@@ -1,8 +1,6 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import ClientListItem from '../components/Features/ClientList/ClientListItem/ClientListItem';
-import Footer from '../components/UI/Footer/Footer';
 import TopNav from '../components/UI/TopNav/TopNav';
 import { getAllSites as getAllSitesAPI } from '../data/api-sites';
 import styles from '../styles/pages/ClientList.module.scss';

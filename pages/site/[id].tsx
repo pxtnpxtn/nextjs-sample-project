@@ -21,15 +21,10 @@ function index() {
 	};
 
 	useEffect(() => {
-		if (router.query.id) {
-			console.log({ id });
-			getSiteById(id);
+		if (id) {
+			getSiteById(id as string);
 		}
 	}, [router.query]);
-
-	useEffect(() => {
-		console.log({ site });
-	}, [site]);
 
 	return (
 		<div className={styles.container}>
@@ -48,16 +43,22 @@ function index() {
 						style={{ marginRight: 12 }}
 					/>
 				</Link>
-				{/* <ClientInfoSummary
-					title={site.title}
-					address={site.address}
-					images={site.images}
-					contacts={site.contacts}
-				/> */}
+				<ClientInfoSummary
+					title={site?.title}
+					address={site?.address}
+					images={site?.images}
+					contacts={site?.contacts}
+				/>
 			</div>
 
 			<div className={styles.avatar}>
-				{/* <Image src={site?.images[1]} layout="fill" objectFit="cover" /> */}
+				{site?.images && (
+					<Image
+						src={site?.images[1]}
+						layout="fill"
+						objectFit="cover"
+					/>
+				)}
 			</div>
 
 			<div className={styles.contactInfo}>

@@ -12,7 +12,9 @@ function ClientInfoSummary({
 	return (
 		<div className={styles.container}>
 			<div className={styles.avatar}>
-				<Image src={images[0]} layout="fill" objectFit="cover" />
+				{images && (
+					<Image src={images[0]} layout="fill" objectFit="cover" />
+				)}
 			</div>
 			<div className={styles.info}>
 				<h3>{title}</h3>
