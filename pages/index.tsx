@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import parse from 'parse-link-header';
 import ClientListItem from '../components/Features/ClientList/ClientListItem/ClientListItem';
+import ClientListPagination from '../components/Features/ClientList/ClientListPagination/ClientListPagination';
 import TopNav from '../components/UI/TopNav/TopNav';
-import { getAllSites as getAllSitesAPI } from '../data/api-sites';
+import { getSiteList as getSiteListAPI } from '../data/api-sites';
 import styles from '../styles/pages/ClientList.module.scss';
+import usePaginationStore from '../store/pagination';
 
 enum filterTypes {
 	ALL = 'all',
@@ -12,24 +15,31 @@ enum filterTypes {
 }
 
 function index() {
-	const [list, setList] = useState([]);
 	const [filter, setFilter] = useState(filterTypes.ALL);
+	const {
+		list,
+		setList,
+		paginationOptions,
+		setPaginationOptions,
+		currentPage,
+		setCurrentPage
+	} = usePaginationStore();
 
-	const getAllSites = async () => {
-		const res = await getAllSitesAPI();
+	const getSiteList = async (pageNumber: number) => {
+		const res = await getSiteListAPI(pageNumber);
 
-		setList(res);
+		setPaginationOptions(parse(res.headers.link));
+		setList(res.data);
 	};
 
 	useEffect(() => {
 		// API call for list of sites
-		getAllSites();
+		// if (list.length === 0) {
+		// getSiteList(currentPage);
+		// }
+		getSiteList(currentPage);
 		// API call for Profile.
 	}, []);
-
-	useEffect(() => {
-		console.log({ list });
-	}, [list]);
 
 	useEffect(() => {
 		// TODO: Clean up.
@@ -79,9 +89,14 @@ function index() {
 						/>
 					);
 				})}
-				<div>PAGINATION 1 2 3 4 5</div>
+
+				<ClientListPagination
+					paginationOptions={paginationOptions}
+					currentPage={currentPage}
+					setCurrentPage={setCurrentPage}
+					getSiteList={getSiteList}
+				/>
 			</div>
-			{/* <Footer /> */}
 		</div>
 	);
 }

@@ -11,12 +11,15 @@
   "dependencies": {
     "axios": "^0.23.0",
     "next": "11.1.2",
+    "parse-link-header": "^1.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-modal": "^3.14.3",
-    "sass": "^1.43.2"
+    "sass": "^1.43.2",
+    "zustand": "^3.5.14"
   },
   "devDependencies": {
+    "@types/parse-link-header": "^1.0.0",
     "@types/react": "17.0.30",
     "eslint": "8.0.1",
     "eslint-config-next": "11.1.2",

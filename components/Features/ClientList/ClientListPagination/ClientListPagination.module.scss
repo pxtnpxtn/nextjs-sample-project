@@ -1,0 +1,23 @@
+@import '../../../../styles/_variables.scss';
+
+.container {
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+
+	button {
+		padding: 10px 15px;
+		margin: 0 5px;
+		border: 1px solid $primary;
+		border-radius: 5px;
+		background-color: $primary;
+		color: $white;
+		font-size: 16px;
+
+		&:disabled {
+			background-color: #b2b2b2;
+		}
+	}
+}
