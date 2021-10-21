@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import ClientInfoSummary from '../ClientInfoSummary/ClientInfoSummary';
-import styles from './ClientListItem.module.scss';
+import SiteInfoSummary from '../SiteInfoSummary/SiteInfoSummary';
+import styles from './SiteListItem.module.scss';
 import { ISite } from '../../../../models/SitesModel';
 
-function ClientListItem({
+function SiteListItem({
 	id,
 	title,
 	address,
@@ -14,7 +14,7 @@ function ClientListItem({
 	return (
 		<Link href={`/site/${id}`}>
 			<a className={styles.container}>
-				<ClientInfoSummary
+				<SiteInfoSummary
 					title={title}
 					address={address}
 					images={images}
@@ -30,4 +30,4 @@ function ClientListItem({
 	);
 }
 
-export default ClientListItem;
+export default SiteListItem;

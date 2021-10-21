@@ -36,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see it in
 
 -   Pagination
 -   Filtering options
--   Full PWA support ([screenshot](https://ibb.co/hd7fcww))
+-   Full PWA support ([screenshot](https://ibb.co/S7cYZW7))
 
 ## Additional Features To Add
 

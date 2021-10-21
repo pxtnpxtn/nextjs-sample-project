@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import parse from 'parse-link-header';
-import ClientListItem from '../components/Features/ClientList/ClientListItem/ClientListItem';
-import ClientListPagination from '../components/Features/ClientList/ClientListPagination/ClientListPagination';
+import SiteListItem from '../components/Features/SiteList/SiteListItem/SiteListItem';
+import SiteListPagination from '../components/Features/SiteList/SiteListPagination/SiteListPagination';
 import TopNav from '../components/UI/TopNav/TopNav';
 import { getSiteList as getSiteListAPI } from '../data/api-sites';
-import styles from '../styles/pages/ClientList.module.scss';
+import styles from '../styles/pages/SiteList.module.scss';
 import usePaginationStore, { IPaginationOptions } from '../store/pagination';
 import { ISite } from '../models/SitesModel';
 import Loader from '../components/UI/Loader/Loader';
@@ -61,8 +61,8 @@ function index() {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>SiteSec | Client Dashboard</title>
-				<meta name="description" content="SiteSec's client dashboard" />
+				<title>SiteSec | Site Dashboard</title>
+				<meta name="description" content="SiteSec's site dashboard" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
@@ -86,7 +86,7 @@ function index() {
 				<div className={styles.list}>
 					{list.map(({ id, title, address, images, contacts }) => {
 						return (
-							<ClientListItem
+							<SiteListItem
 								key={id}
 								id={id}
 								title={title}
@@ -98,7 +98,7 @@ function index() {
 					})}
 				</div>
 			)}
-			<ClientListPagination
+			<SiteListPagination
 				paginationOptions={paginationOptions}
 				currentPage={currentPage}
 				setCurrentPage={setCurrentPage}

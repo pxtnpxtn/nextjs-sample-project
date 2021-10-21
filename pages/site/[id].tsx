@@ -3,12 +3,12 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import ClientInfoSummary from '../../components/Features/ClientList/ClientInfoSummary/ClientInfoSummary';
+import SiteInfoSummary from '../../components/Features/SiteList/SiteInfoSummary/SiteInfoSummary';
 import Loader from '../../components/UI/Loader/Loader';
 import TopNav from '../../components/UI/TopNav/TopNav';
 import { getSiteById as getSiteByIdAPI } from '../../data/api-sites';
 import { ISite } from '../../models/SitesModel';
-import styles from '../../styles/pages/ClientProfile.module.scss';
+import styles from '../../styles/pages/SiteProfile.module.scss';
 
 function index() {
 	const [isLoading, setIsLoading] = useState(true);
@@ -36,8 +36,8 @@ function index() {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>SiteSec | Client Page</title>
-				<meta name="description" content="SiteSec client page" />
+				<title>SiteSec | Site Page</title>
+				<meta name="description" content="SiteSec site page" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<TopNav />
@@ -54,7 +54,7 @@ function index() {
 								style={{ marginRight: 12, cursor: 'pointer' }}
 							/>
 						</Link>
-						<ClientInfoSummary
+						<SiteInfoSummary
 							title={site?.title}
 							address={site?.address}
 							images={site?.images}

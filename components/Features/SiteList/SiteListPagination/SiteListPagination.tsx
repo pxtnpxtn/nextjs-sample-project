@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import usePaginationStore, {
 	IPaginationOptions
 } from '../../../../store/pagination';
-import styles from './ClientListPagination.module.scss';
+import styles from './SiteListPagination.module.scss';
 
-interface IClientListPagination {
+interface ISiteListPagination {
 	paginationOptions: IPaginationOptions;
 	currentPage: number;
 	setCurrentPage: (newCurrentNumber: number) => void;
@@ -12,13 +12,13 @@ interface IClientListPagination {
 	isLoading: boolean;
 }
 
-function ClientListPagination({
+function SiteListPagination({
 	paginationOptions,
 	currentPage,
 	setCurrentPage,
 	getSiteList,
 	isLoading
-}: IClientListPagination) {
+}: ISiteListPagination) {
 	const goToFirstPage = async () => {
 		getSiteList(Number(paginationOptions.first?._page));
 		setCurrentPage(Number(paginationOptions.first?._page));
@@ -79,4 +79,4 @@ function ClientListPagination({
 	);
 }
 
-export default ClientListPagination;
+export default SiteListPagination;

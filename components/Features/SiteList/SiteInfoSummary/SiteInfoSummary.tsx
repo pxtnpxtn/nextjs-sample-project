@@ -1,14 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from './ClientInfoSummary.module.scss';
+import styles from './SiteInfoSummary.module.scss';
 import { ISite } from '../../../../models/SitesModel';
 
-function ClientInfoSummary({
-	title,
-	address,
-	images,
-	contacts
-}: Partial<ISite>) {
+function SiteInfoSummary({ title, address, images, contacts }: Partial<ISite>) {
 	return (
 		<div className={styles.container}>
 			<div className={styles.avatar}>
@@ -29,4 +24,4 @@ function ClientInfoSummary({
 	);
 }
 
-export default ClientInfoSummary;
+export default SiteInfoSummary;
