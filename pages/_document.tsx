@@ -34,7 +34,7 @@ class MyDocument extends Document {
 
 					<link
 						rel="apple-touch-icon"
-						href="/pwa-icons/touch-icon-iphone.png"
+						href="/pwa-icons/touch-icon-ipad.png"
 					/>
 					<link
 						rel="apple-touch-icon"
@@ -67,14 +67,10 @@ class MyDocument extends Document {
 					<link rel="manifest" href="/manifest.json" />
 					<link
 						rel="mask-icon"
-						href="/pwa-icons/safari-pinned-tab.svg"
+						href="/pwa-icons/favicon-32x32.png"
 						color="#5bbad5"
 					/>
 					<link rel="shortcut icon" href="/favicon.ico" />
-					<link
-						rel="stylesheet"
-						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-					/>
 
 					<meta name="twitter:card" content="summary" />
 					<meta name="twitter:url" content="https://yourdomain.com" />
