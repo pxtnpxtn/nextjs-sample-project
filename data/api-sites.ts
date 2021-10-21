@@ -4,7 +4,7 @@ const ENDPOINT = 'https://tracktik-challenge.staffr.com/sites';
 
 export const getSiteList = async (page = 1) => {
 	return axios.get(`${ENDPOINT}?_page=${page}`).then((res) => {
-        // Response returns list data and pagination options.
+        // Return res because response returns list data and pagination options.
         return res;
     });
 };
