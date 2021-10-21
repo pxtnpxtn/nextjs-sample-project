@@ -9,6 +9,7 @@ import styles from '../styles/pages/SiteList.module.scss';
 import usePaginationStore, { IPaginationOptions } from '../store/pagination';
 import { ISite } from '../models/SitesModel';
 import Loader from '../components/UI/Loader/Loader';
+import SiteFilter from '../components/Features/SiteList/SiteFilter/SiteFilter';
 
 enum filterTypes {
 	ALL = 'all',
@@ -16,9 +17,22 @@ enum filterTypes {
 	OLDEST = 'oldest'
 }
 
+const filterOptions = [
+	{
+		label: 'All sites (Newest)',
+		endpoint:
+			'https://tracktik-challenge.staffr.com/sites?_sort=createdAt&_order=asc&_page=1'
+	},
+	{
+		label: 'All sites (Oldest)',
+		endpoint:
+			'https://tracktik-challenge.staffr.com/sites?_sort=createdAt&_order=desc&_page=1'
+	}
+];
+
 function index() {
 	const [isLoading, setIsLoading] = useState(true);
-	const [filter, setFilter] = useState(filterTypes.ALL);
+	const [selectedFilter, setSelectedFilter] = useState(filterOptions[0]);
 	const {
 		list,
 		setList,
@@ -46,17 +60,8 @@ function index() {
 	}, []);
 
 	useEffect(() => {
-		// TODO: Clean up.
-		if (filter === filterTypes.ALL) {
-			// API call for list of sites
-		}
-		if (filter === filterTypes.NEWEST) {
-			// API call for newest added sites
-		}
-		if (filter === filterTypes.OLDEST) {
-			// API call for oldest added sites
-		}
-	}, [filter]);
+		console.log(selectedFilter.endpoint);
+	}, [selectedFilter]);
 
 	return (
 		<div className={styles.container}>
@@ -69,17 +74,13 @@ function index() {
 			<TopNav />
 			<h3 className={styles.banner}>Sites</h3>
 			<div className={styles.optionsBar}>
-				<div className={styles.filter}>
-					<p>All sites</p>
-					<img
-						src="/icons/down-arrow.svg"
-						alt="Down arrow"
-						height={20}
-					/>
-				</div>
+				<SiteFilter
+					filterOptions={filterOptions}
+					selectedFilter={selectedFilter}
+					setSelectedFilter={setSelectedFilter}
+				/>
 				<img src="/icons/search.svg" alt="Search" height={25} />
 			</div>
-			{/* TODO: Componentize? */}
 			{isLoading ? (
 				<Loader />
 			) : (

@@ -31,3 +31,8 @@ export interface ISite {
     images: string[];
     tags: string[];
 }
+
+export interface IFilterOption {
+    label: string;
+    endpoint: string;
+}
