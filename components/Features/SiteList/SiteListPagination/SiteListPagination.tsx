@@ -25,7 +25,7 @@ function SiteListPagination({
 		setCurrentPage(Number(paginationOptions.first?._page));
 	};
 	const goToPreviousPage = () => {
-		getSiteList(order, Number(paginationOptions.first?._page));
+		getSiteList(order, Number(paginationOptions.prev?._page));
 		setCurrentPage(Number(paginationOptions.prev?._page));
 	};
 	const goToNextPage = () => {

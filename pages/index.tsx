@@ -31,10 +31,10 @@ const filterOptions = [
 function index() {
 	const [list, setList] = useState<ISite[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-	const [selectedFilter, setSelectedFilter] = useState<IFilterOption>(
-		filterOptions[0]
-	);
+	// const [selectedFilter, setSelectedFilter] = useState<any>(null);
 	const {
+		selectedFilter,
+		setSelectedFilter,
 		order,
 		setOrder,
 		paginationOptions,
