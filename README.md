@@ -39,6 +39,10 @@ Note: I wouldn't usually commit the .env, however for completeness I did.
 -   Pagination
 -   Filtering options
 -   Full PWA support ([screenshot](https://ibb.co/S7cYZW7))
+-   Noteworthy:
+    -   Persistent order and page number (going from dashboard to site, and back).
+    -   Custom 404 page for routes that don't exist (http://localhost:3000/example).
+    -   Direct call, mailTo and Google Maps linked to profile contact information.
 
 ## Additional Features To Add
 

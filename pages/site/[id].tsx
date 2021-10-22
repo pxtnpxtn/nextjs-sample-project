@@ -125,6 +125,8 @@ function index() {
 							/>
 							<div>
 								<a
+									target="_blank"
+									rel="noopener noreferrer"
 									href={`https://maps.google.com/?q=${site?.contacts.main.address.street},
 									${site?.contacts.main.address.city},
 									${site?.contacts.main.address.state},

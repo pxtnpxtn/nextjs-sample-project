@@ -19,19 +19,16 @@ const filterOptions = [
 	{
 		label: 'All sites (Newest)',
 		filterType: FilterTypes.NEWEST
-		// 'https://tracktik-challenge.staffr.com/sites?_sort=createdAt&_order=asc&_page=1'
 	},
 	{
 		label: 'All sites (Oldest)',
 		filterType: FilterTypes.OLDEST
-		// 'https://tracktik-challenge.staffr.com/sites?_sort=createdAt&_order=desc&_page=1'
 	}
 ];
 
 function index() {
 	const [list, setList] = useState<ISite[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-	// const [selectedFilter, setSelectedFilter] = useState<any>(null);
 	const {
 		selectedFilter,
 		setSelectedFilter,
@@ -57,7 +54,6 @@ function index() {
 	};
 
 	useEffect(() => {
-		console.log(selectedFilter.filterType);
 		setOrder(selectedFilter.filterType);
 	}, [selectedFilter]);
 
@@ -95,7 +91,6 @@ function index() {
 						});
 						setCurrentPage(1);
 					}}
-					// value={order}
 					defaultValue={order}
 				>
 					{filterOptions.map((option) => (
