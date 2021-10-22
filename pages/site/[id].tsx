@@ -96,7 +96,11 @@ function index() {
 								style={{ marginRight: 12 }}
 							/>
 							<div>
-								<p>{site?.contacts.main.phoneNumber}</p>
+								<a
+									href={`tel:+${site?.contacts.main.phoneNumber}`}
+								>
+									{site?.contacts.main.phoneNumber}
+								</a>
 							</div>
 						</div>
 						<div className={styles.contactRow}>
@@ -107,7 +111,9 @@ function index() {
 								style={{ marginRight: 12 }}
 							/>
 							<div>
-								<p>{site?.contacts.main.email}</p>
+								<a href={`mailto:${site?.contacts.main.email}`}>
+									{site?.contacts.main.email}
+								</a>
 							</div>
 						</div>
 						<div className={styles.contactRow}>
@@ -118,13 +124,19 @@ function index() {
 								style={{ marginRight: 12 }}
 							/>
 							<div>
-								<p>
+								<a
+									href={`https://maps.google.com/?q=${site?.contacts.main.address.street},
+									${site?.contacts.main.address.city},
+									${site?.contacts.main.address.state},
+									${site?.contacts.main.address.zipCode},
+									${site?.contacts.main.address.country}`}
+								>
 									{site?.contacts.main.address.street},{' '}
 									{site?.contacts.main.address.city},{' '}
 									{site?.contacts.main.address.state},{' '}
 									{site?.contacts.main.address.zipCode},{' '}
 									{site?.contacts.main.address.country}
-								</p>
+								</a>
 							</div>
 						</div>
 					</div>
