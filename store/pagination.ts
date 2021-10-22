@@ -1,5 +1,4 @@
 import create from 'zustand';
-import { ISite } from '../models/SitesModel';
 
 export interface IPaginationOptions {
     first?: IPaginationInfo;
@@ -15,8 +14,8 @@ export interface IPaginationInfo {
 }
   
 export interface IPagination {
-    list: ISite[];
-    setList: (list: ISite[]) => void;
+    order: string;
+    setOrder: (sort: string) => void;
     paginationOptions: IPaginationOptions;
     setPaginationOptions: (info: IPaginationOptions) => void;
     currentPage: number;
@@ -24,8 +23,8 @@ export interface IPagination {
 }
 
 const usePaginationStore = create<IPagination>(set => ({
-    list: [],
-    setList: (list: ISite[]) => set({list}),
+    order: 'newest',
+    setOrder: (order) => set({order}),
     paginationOptions: {},
     setPaginationOptions: (paginationOptions: IPaginationOptions) => set({paginationOptions}),
     currentPage: 1,

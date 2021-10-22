@@ -20,7 +20,7 @@ function index() {
 		setIsLoading(true);
 		try {
 			const res = await getSiteByIdAPI(id);
-			setSite(res[0]);
+			setSite(res);
 		} catch (e) {
 			console.log('Something went wrong', e);
 		}

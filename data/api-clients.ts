@@ -1,9 +1,9 @@
-import axios from 'axios';
+import { authenicatedAxiosInstance } from './axios-authenicated';
 
-const ENDPOINT = 'https://tracktik-challenge.staffr.com/clients';
+const ENDPOINT = '/clients';
 
-export const getAllClients = async () => {
-	return axios.get(`${ENDPOINT}`).then((res) => {
+export const getAllClients = async (page: number) => {
+	return authenicatedAxiosInstance.get(`${ENDPOINT}?_page=${page}`).then((res) => {
         return res.data;
     });
 };

@@ -1,9 +1,9 @@
-import axios from 'axios';
+import { authenicatedAxiosInstance } from './axios-authenicated';
 
-const ENDPOINT = 'https://tracktik-challenge.staffr.com/version';
+const ENDPOINT = '/version';
 
 export const getAppVersion = async () => {
-	return axios.get(`${ENDPOINT}`).then((res) => {
+	return authenicatedAxiosInstance.get(`${ENDPOINT}`).then((res) => {
         return res.data;
     });
 };

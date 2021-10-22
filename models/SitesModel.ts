@@ -34,5 +34,5 @@ export interface ISite {
 
 export interface IFilterOption {
     label: string;
-    endpoint: string;
+    filterType: string;
 }

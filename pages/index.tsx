@@ -4,15 +4,13 @@ import parse from 'parse-link-header';
 import SiteListItem from '../components/Features/SiteList/SiteListItem/SiteListItem';
 import SiteListPagination from '../components/Features/SiteList/SiteListPagination/SiteListPagination';
 import TopNav from '../components/UI/TopNav/TopNav';
-import { getSiteList as getSiteListAPI } from '../data/api-sites';
+import { getSortedSiteList as getSortedSiteListAPI } from '../data/api-sites';
 import styles from '../styles/pages/SiteList.module.scss';
 import usePaginationStore, { IPaginationOptions } from '../store/pagination';
-import { ISite } from '../models/SitesModel';
+import { IFilterOption, ISite } from '../models/SitesModel';
 import Loader from '../components/UI/Loader/Loader';
-import SiteFilter from '../components/Features/SiteList/SiteFilter/SiteFilter';
 
-enum filterTypes {
-	ALL = 'all',
+export enum FilterTypes {
 	NEWEST = 'newest',
 	OLDEST = 'oldest'
 }
@@ -20,32 +18,35 @@ enum filterTypes {
 const filterOptions = [
 	{
 		label: 'All sites (Newest)',
-		endpoint:
-			'https://tracktik-challenge.staffr.com/sites?_sort=createdAt&_order=asc&_page=1'
+		filterType: FilterTypes.NEWEST
+		// 'https://tracktik-challenge.staffr.com/sites?_sort=createdAt&_order=asc&_page=1'
 	},
 	{
 		label: 'All sites (Oldest)',
-		endpoint:
-			'https://tracktik-challenge.staffr.com/sites?_sort=createdAt&_order=desc&_page=1'
+		filterType: FilterTypes.OLDEST
+		// 'https://tracktik-challenge.staffr.com/sites?_sort=createdAt&_order=desc&_page=1'
 	}
 ];
 
 function index() {
-	const [isLoading, setIsLoading] = useState(true);
-	const [selectedFilter, setSelectedFilter] = useState(filterOptions[0]);
+	const [list, setList] = useState<ISite[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [selectedFilter, setSelectedFilter] = useState<IFilterOption>(
+		filterOptions[0]
+	);
 	const {
-		list,
-		setList,
+		order,
+		setOrder,
 		paginationOptions,
 		setPaginationOptions,
 		currentPage,
 		setCurrentPage
 	} = usePaginationStore();
 
-	const getSiteList = async (pageNumber: number) => {
+	const getSiteList = async (order: string, pageNumber: number) => {
 		setIsLoading(true);
 		try {
-			const res = await getSiteListAPI(pageNumber);
+			const res = await getSortedSiteListAPI(order, pageNumber);
 
 			setPaginationOptions(parse(res.headers.link) as IPaginationOptions);
 			setList(res.data as ISite[]);
@@ -56,12 +57,23 @@ function index() {
 	};
 
 	useEffect(() => {
-		getSiteList(currentPage);
-	}, []);
+		console.log(selectedFilter.filterType);
+		setOrder(selectedFilter.filterType);
+	}, [selectedFilter]);
 
 	useEffect(() => {
-		console.log(selectedFilter.endpoint);
-	}, [selectedFilter]);
+		switch (order) {
+			case FilterTypes.NEWEST:
+				getSiteList(order, currentPage);
+				break;
+			case FilterTypes.OLDEST:
+				getSiteList(order, currentPage);
+				break;
+			default:
+				getSiteList(order, currentPage);
+				break;
+		}
+	}, [order]);
 
 	return (
 		<div className={styles.container}>
@@ -74,11 +86,27 @@ function index() {
 			<TopNav />
 			<h3 className={styles.banner}>Sites</h3>
 			<div className={styles.optionsBar}>
-				<SiteFilter
-					filterOptions={filterOptions}
-					selectedFilter={selectedFilter}
-					setSelectedFilter={setSelectedFilter}
-				/>
+				<select
+					className={styles.filter}
+					onChange={(e) => {
+						setSelectedFilter({
+							label: e.target.selectedOptions[0].label,
+							filterType: e.target.value
+						});
+						setCurrentPage(1);
+					}}
+					// value={order}
+					defaultValue={order}
+				>
+					{filterOptions.map((option) => (
+						<option
+							key={option.filterType}
+							value={option.filterType}
+						>
+							{option.label}
+						</option>
+					))}
+				</select>
 				<img src="/icons/search.svg" alt="Search" height={25} />
 			</div>
 			{isLoading ? (
@@ -100,6 +128,7 @@ function index() {
 				</div>
 			)}
 			<SiteListPagination
+				order={order}
 				paginationOptions={paginationOptions}
 				currentPage={currentPage}
 				setCurrentPage={setCurrentPage}

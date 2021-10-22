@@ -18,6 +18,8 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see it in action.
 
+Note: I wouldn't usually commit the .env, however for completeness I did.
+
 ## Stack
 
 -   [Next.js](https://nextjs.org/)
