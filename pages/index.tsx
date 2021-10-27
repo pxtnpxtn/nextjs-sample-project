@@ -7,7 +7,7 @@ import TopNav from '../components/UI/TopNav/TopNav';
 import { getSortedSiteList as getSortedSiteListAPI } from '../data/api-sites';
 import styles from '../styles/pages/SiteList.module.scss';
 import usePaginationStore, { IPaginationOptions } from '../store/pagination';
-import { IFilterOption, ISite } from '../models/SitesModel';
+import { ISite } from '../models/SitesModel';
 import Loader from '../components/UI/Loader/Loader';
 
 export enum FilterTypes {
@@ -30,20 +30,18 @@ function index() {
 	const [list, setList] = useState<ISite[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const {
-		selectedFilter,
-		setSelectedFilter,
-		order,
-		setOrder,
+		filter,
+		setFilter,
 		paginationOptions,
 		setPaginationOptions,
 		currentPage,
 		setCurrentPage
 	} = usePaginationStore();
 
-	const getSiteList = async (order: string, pageNumber: number) => {
+	const getSiteList = async (filter: string, pageNumber: number) => {
 		setIsLoading(true);
 		try {
-			const res = await getSortedSiteListAPI(order, pageNumber);
+			const res = await getSortedSiteListAPI(filter, pageNumber);
 
 			setPaginationOptions(parse(res.headers.link) as IPaginationOptions);
 			setList(res.data as ISite[]);
@@ -54,22 +52,18 @@ function index() {
 	};
 
 	useEffect(() => {
-		setOrder(selectedFilter.filterType);
-	}, [selectedFilter]);
-
-	useEffect(() => {
-		switch (order) {
+		switch (filter) {
 			case FilterTypes.NEWEST:
-				getSiteList(order, currentPage);
+				getSiteList(filter, currentPage);
 				break;
 			case FilterTypes.OLDEST:
-				getSiteList(order, currentPage);
+				getSiteList(filter, currentPage);
 				break;
 			default:
-				getSiteList(order, currentPage);
+				getSiteList(filter, currentPage);
 				break;
 		}
-	}, [order]);
+	}, [filter]);
 
 	return (
 		<div className={styles.container}>
@@ -85,13 +79,10 @@ function index() {
 				<select
 					className={styles.filter}
 					onChange={(e) => {
-						setSelectedFilter({
-							label: e.target.selectedOptions[0].label,
-							filterType: e.target.value
-						});
+						setFilter(e.target.value);
 						setCurrentPage(1);
 					}}
-					defaultValue={order}
+					defaultValue={filter}
 				>
 					{filterOptions.map((option) => (
 						<option
@@ -123,7 +114,7 @@ function index() {
 				</div>
 			)}
 			<SiteListPagination
-				order={order}
+				filter={filter}
 				paginationOptions={paginationOptions}
 				currentPage={currentPage}
 				setCurrentPage={setCurrentPage}

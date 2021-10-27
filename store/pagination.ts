@@ -1,6 +1,4 @@
 import create from 'zustand';
-import { IFilterOption } from '../models/SitesModel';
-import { FilterTypes } from '../pages';
 
 export interface IPaginationOptions {
     first?: IPaginationInfo;
@@ -16,10 +14,8 @@ export interface IPaginationInfo {
 }
   
 export interface IPagination {
-    selectedFilter: IFilterOption;
-	setSelectedFilter: (info: IFilterOption) => void;
-    order: string;
-    setOrder: (sort: string) => void;
+    filter: string;
+    setFilter: (sort: string) => void;
     paginationOptions: IPaginationOptions;
     setPaginationOptions: (info: IPaginationOptions) => void;
     currentPage: number;
@@ -27,13 +23,8 @@ export interface IPagination {
 }
 
 const usePaginationStore = create<IPagination>(set => ({
-    selectedFilter: {
-		label: 'All sites (Newest)',
-		filterType: 'newest',
-	},
-    setSelectedFilter: (selectedFilter) => set({selectedFilter}),
-    order: 'newest',
-    setOrder: (order) => set({order}),
+    filter: 'newest',
+    setFilter: (filter) => set({filter}),
     paginationOptions: {},
     setPaginationOptions: (paginationOptions: IPaginationOptions) => set({paginationOptions}),
     currentPage: 1,

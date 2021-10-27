@@ -4,16 +4,16 @@ import { IPaginationOptions } from '../../../../store/pagination';
 import styles from './SiteListPagination.module.scss';
 
 interface ISiteListPagination {
-	order: string;
+	filter: string;
 	paginationOptions: IPaginationOptions;
 	currentPage: number;
 	setCurrentPage: (newCurrentNumber: number) => void;
-	getSiteList: (order: string, pageNumber: number) => void;
+	getSiteList: (filter: string, pageNumber: number) => void;
 	isLoading: boolean;
 }
 
 function SiteListPagination({
-	order,
+	filter,
 	paginationOptions,
 	currentPage,
 	setCurrentPage,
@@ -21,19 +21,19 @@ function SiteListPagination({
 	isLoading
 }: ISiteListPagination) {
 	const goToFirstPage = async () => {
-		getSiteList(order, Number(paginationOptions.first?._page));
+		getSiteList(filter, Number(paginationOptions.first?._page));
 		setCurrentPage(Number(paginationOptions.first?._page));
 	};
 	const goToPreviousPage = () => {
-		getSiteList(order, Number(paginationOptions.prev?._page));
+		getSiteList(filter, Number(paginationOptions.prev?._page));
 		setCurrentPage(Number(paginationOptions.prev?._page));
 	};
 	const goToNextPage = () => {
-		getSiteList(order, Number(paginationOptions.next?._page));
+		getSiteList(filter, Number(paginationOptions.next?._page));
 		setCurrentPage(Number(paginationOptions.next?._page));
 	};
 	const goToLastPage = () => {
-		getSiteList(order, Number(paginationOptions.last?._page));
+		getSiteList(filter, Number(paginationOptions.last?._page));
 		setCurrentPage(Number(paginationOptions.last?._page));
 	};
 
